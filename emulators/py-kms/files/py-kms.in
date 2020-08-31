@@ -1,0 +1,44 @@
+#!/bin/sh
+
+# $FreeBSD:$
+#
+# PROVIDE: %%PORTNAME%%
+# REQUIRE: DAEMON
+# KEYWORD: shutdown
+
+# Add the following lines to /etc/rc.conf to enable %%PORTNAME%%
+# %%RCNAME%%_enable="YES"
+#
+# %%RCNAME%%_enable (bool):	Set to YES to enable %%PORTNAME%%
+#								Default: NO
+# %%RCNAME%%_user (str):		%%PORTNAME%% daemon user
+#								Default: daemon
+# %%RCNAME%%_group (str):		%%PORTNAME%% daemon group
+#								Default: daemon
+
+. /etc/rc.subr
+
+name="%%RCNAME%%"
+rcvar=%%RCNAME%%_enable
+load_rc_config "$name"
+
+: ${%%RCNAME%%_enable:="NO"}
+: ${%%RCNAME%%_user:="daemon"}
+: ${%%RCNAME%%_group:="daemon"}
+
+extra_commands="reload"
+
+pidfile="%%KMS_RUNDIR%%/%%PORTNAME%%.pid"
+kms_logfile="%%KMS_LOGDIR%%/%%PORTNAME%%.log"
+srv_logfile="%%KMS_LOGDIR%%/%%PORTNAME%%_srv.log"
+
+command_interpreter="%%PYTHON_CMD%%"
+command="%%PREFIX%%/share/py-kms/pykms_Server.py"
+command_args="--logfile ${kms_logfile} --sqlite ${%%RCNAME%%_flags} etrigan start --etrigan-pid ${pidfile} --etrigan-log ${srv_logfile}"
+
+status_cmd="${command} etrigan status"
+reload_cmd="${command} etrigan reload"
+stop_cmd="${command} etrigan stop"
+
+run_rc_command "$1"
+

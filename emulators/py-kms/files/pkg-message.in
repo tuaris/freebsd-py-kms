@@ -1,0 +1,18 @@
+[
+{ type: install
+  message: <<EOM
+
+To run %%PORTNAME%% at startup, enable it in your /etc/rc.conf:
+sysrc %%PORTNAME%%_enable="YES"
+
+To start %%PORTNAME%%:
+service %%PORTNAME%% start
+
+To configure %%PORTNAME%% edit:
+%%ETCDIR%%/%%PORTNAME%%.conf
+
+EOM
+}
+]
+
+
