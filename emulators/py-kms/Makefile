@@ -6,33 +6,38 @@ DISTVERSION=	g20200803
 CATEGORIES=	emulators python
 PKGNAMEPREFIX=  ${PYTHON_PKGNAMEPREFIX}
 
-USE_GITHUB=	yes
-GH_TAGNAME=	5b328d2
-GH_ACCOUNT=	SystemRage
-GH_PROJECT=	py-${PORTNAME}
-
-PYKMS_SUBDIR=	py-${PORTNAME}
-
 MAINTAINER=	daniel@morante.net
-COMMENT=	KMS Server Emulator written in Python.
+COMMENT=	KMS Server Emulator written in Python
 
-LICENSE = UNLICENSE MIT
+LICENSE=	UNLICENSE MIT
 LICENSE_COMB=	multi
 LICENSE_FILE_UNLICENSE=	${WRKSRC}/LICENSE
-LICENSE_FILE_MIT=     ${WRKSRC}/LICENSE.gui.md
+LICENSE_FILE_MIT=		${WRKSRC}/LICENSE.gui.md
 
 RUN_DEPENDS=    ${PYTHON_PKGNAMEPREFIX}argparse>0:devel/py-argparse@${PY_FLAVOR} \
 				${PYTHON_PKGNAMEPREFIX}sqlite3>0:databases/py-sqlite3@${PY_FLAVOR} \
 				${PYTHON_PKGNAMEPREFIX}tzlocal>=1.2:devel/py-tzlocal@${PY_FLAVOR}
 
 USES = python:3.4+ shebangfix
-SHEBANG_FILES=	py-kms/*.py
 
-USE_RC_SUBR=    py-kms
+USE_GITHUB=	yes
+GH_TAGNAME=	5b328d2
+GH_ACCOUNT=	SystemRage
+GH_PROJECT=	py-${PORTNAME}
 
+OPTIONS_DEFINE=	X11
+
+X11_USES=	xorg tk
+X11_RUN_DEPENDS=    ${PYTHON_PKGNAMEPREFIX}tkinter>0:x11-toolkits/py-tkinter@${PY_FLAVOR}
+
+PYKMS_SUBDIR=	py-${PORTNAME}
 KMS_RUNDIR=  /var/run/${PORTNAME}
 KMS_LOGDIR=  /var/log/${PORTNAME}
 KMS_DBDIR=	/var/db/${PORTNAME}
+
+SHEBANG_FILES=	${PYKMS_SUBDIR}/*.py
+
+USE_RC_SUBR=    py-kms
 
 USE_PYTHON=	allflavors
 
@@ -42,11 +47,6 @@ SUB_LIST+=	PORTNAME=py-${PORTNAME} RCNAME=py_${PORTNAME} \
 
 NO_ARCH=        yes
 NO_BUILD=       yes
-
-OPTIONS_DEFINE=	X11
-
-X11_USES=	xorg tk
-X11_RUN_DEPENDS=    ${PYTHON_PKGNAMEPREFIX}tkinter>0:x11-toolkits/py-tkinter@${PY_FLAVOR}
 
 post-patch:
 	@${REINPLACE_CMD} -e "s,dbName = 'clients.db',dbName = '${KMS_DBDIR}/clients.db',g" \
@@ -67,7 +67,7 @@ do-install:
 			-d ${WRKSRC}/${PYKMS_SUBDIR} \
 			-f ${WRKSRC}/${PYKMS_SUBDIR})
 	@${MKDIR} ${STAGEDIR}${PREFIX}/share/${PYKMS_SUBDIR}
-	@${INSTALL_SCRIPT} ${WRKSRC}/${PYKMS_SUBDIR}/pykms_Server.py ${STAGEDIR}${PREFIX}/share/${PYKMS_SUBDIR}
+	${INSTALL_SCRIPT} ${WRKSRC}/${PYKMS_SUBDIR}/pykms_Server.py ${STAGEDIR}${PREFIX}/share/${PYKMS_SUBDIR}
 	(cd ${WRKSRC}/${PYKMS_SUBDIR} && \
 		${COPYTREE_SHARE} . ${STAGEDIR}${PREFIX}/share/${PYKMS_SUBDIR} '! -name pykms_Server.py')
 
