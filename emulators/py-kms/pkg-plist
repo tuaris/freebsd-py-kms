@@ -70,6 +70,7 @@ share/py-kms/pykms_RpcRequest.py
 share/py-kms/pykms_Server.py
 share/py-kms/pykms_Sql.py
 share/py-kms/pykms_Structure.py
+%%X11%%share/pixmaps/py-kms.png
 @dir(daemon,daemon,) /var/log/kms
 @dir(daemon,daemon,) /var/run/kms
 @dir(daemon,daemon,) /var/db/kms

@@ -15,8 +15,8 @@ LICENSE_FILE_UNLICENSE=	${WRKSRC}/LICENSE
 LICENSE_FILE_MIT=		${WRKSRC}/LICENSE.gui.md
 
 RUN_DEPENDS=    ${PYTHON_PKGNAMEPREFIX}argparse>0:devel/py-argparse@${PY_FLAVOR} \
-				${PYTHON_PKGNAMEPREFIX}sqlite3>0:databases/py-sqlite3@${PY_FLAVOR} \
-				${PYTHON_PKGNAMEPREFIX}tzlocal>=1.2:devel/py-tzlocal@${PY_FLAVOR}
+			${PYTHON_PKGNAMEPREFIX}sqlite3>0:databases/py-sqlite3@${PY_FLAVOR} \
+			${PYTHON_PKGNAMEPREFIX}tzlocal>=1.2:devel/py-tzlocal@${PY_FLAVOR}
 
 USES = python:3.4+ shebangfix
 
@@ -26,8 +26,10 @@ GH_ACCOUNT=	SystemRage
 GH_PROJECT=	py-${PORTNAME}
 
 OPTIONS_DEFINE=	X11
+OPTIONS_SUB=	yes
 
 X11_USES=	xorg tk
+X11_USE=	xorg=x11
 X11_RUN_DEPENDS=    ${PYTHON_PKGNAMEPREFIX}tkinter>0:x11-toolkits/py-tkinter@${PY_FLAVOR}
 
 PYKMS_SUBDIR=	py-${PORTNAME}
@@ -47,6 +49,14 @@ SUB_LIST+=	PORTNAME=py-${PORTNAME} RCNAME=py_${PORTNAME} \
 
 NO_ARCH=        yes
 NO_BUILD=       yes
+
+.include <bsd.port.options.mk>
+
+.if ${PORT_OPTIONS:MX11}
+DESKTOP_ENTRIES=	"Py-KMS GUI" "${COMMENT}" "${PREFIX}/share/pixmaps/py-kms.png" \
+			"${PREFIX}/share/${PYKMS_SUBDIR}/pykms_Server.py" \
+			"Network;"  ${FALSE}
+.endif
 
 post-patch:
 	@${REINPLACE_CMD} -e "s,dbName = 'clients.db',dbName = '${KMS_DBDIR}/clients.db',g" \
@@ -70,5 +80,8 @@ do-install:
 	${INSTALL_SCRIPT} ${WRKSRC}/${PYKMS_SUBDIR}/pykms_Server.py ${STAGEDIR}${PREFIX}/share/${PYKMS_SUBDIR}
 	(cd ${WRKSRC}/${PYKMS_SUBDIR} && \
 		${COPYTREE_SHARE} . ${STAGEDIR}${PREFIX}/share/${PYKMS_SUBDIR} '! -name pykms_Server.py')
+.if ${PORT_OPTIONS:MX11}
+	${INSTALL_DATA}	${FILESDIR}/py-kms.png ${STAGEDIR}${PREFIX}/share/pixmaps/py-kms.png
+.endif
 
 .include <bsd.port.mk>
