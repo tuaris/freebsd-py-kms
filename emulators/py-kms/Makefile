@@ -4,7 +4,7 @@
 PORTNAME=	kms
 DISTVERSION=	g20200803
 CATEGORIES=	emulators python
-PKGNAMEPREFIX=  ${PYTHON_PKGNAMEPREFIX}
+PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 
 MAINTAINER=	daniel@morante.net
 COMMENT=	KMS Server Emulator written in Python
@@ -14,11 +14,11 @@ LICENSE_COMB=	multi
 LICENSE_FILE_UNLICENSE=	${WRKSRC}/LICENSE
 LICENSE_FILE_MIT=		${WRKSRC}/LICENSE.gui.md
 
-RUN_DEPENDS=    ${PYTHON_PKGNAMEPREFIX}argparse>0:devel/py-argparse@${PY_FLAVOR} \
+RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}argparse>0:devel/py-argparse@${PY_FLAVOR} \
 			${PYTHON_PKGNAMEPREFIX}sqlite3>0:databases/py-sqlite3@${PY_FLAVOR} \
 			${PYTHON_PKGNAMEPREFIX}tzlocal>=1.2:devel/py-tzlocal@${PY_FLAVOR}
 
-USES = python:3.4+ shebangfix
+USES=	python:3.4+ shebangfix
 
 USE_GITHUB=	yes
 GH_TAGNAME=	5b328d2
@@ -30,16 +30,16 @@ OPTIONS_SUB=	yes
 
 X11_USES=	xorg tk
 X11_USE=	xorg=x11
-X11_RUN_DEPENDS=    ${PYTHON_PKGNAMEPREFIX}tkinter>0:x11-toolkits/py-tkinter@${PY_FLAVOR}
+X11_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}tkinter>0:x11-toolkits/py-tkinter@${PY_FLAVOR}
 
 PYKMS_SUBDIR=	py-${PORTNAME}
-KMS_RUNDIR=  /var/run/${PORTNAME}
-KMS_LOGDIR=  /var/log/${PORTNAME}
+KMS_RUNDIR=	/var/run/${PORTNAME}
+KMS_LOGDIR=	/var/log/${PORTNAME}
 KMS_DBDIR=	/var/db/${PORTNAME}
 
 SHEBANG_FILES=	${PYKMS_SUBDIR}/*.py
 
-USE_RC_SUBR=    py-kms
+USE_RC_SUBR=	py-kms
 
 USE_PYTHON=	allflavors
 
@@ -47,8 +47,8 @@ SUB_LIST+=	PORTNAME=py-${PORTNAME} RCNAME=py_${PORTNAME} \
 		PYTHON_CMD=${PYTHON_CMD} PYTHON_VER=${PYTHON_VER} \
 		KMS_RUNDIR=${KMS_RUNDIR} KMS_LOGDIR=${KMS_LOGDIR} KMS_DBDIR=${KMS_DBDIR}
 
-NO_ARCH=        yes
-NO_BUILD=       yes
+NO_ARCH=	yes
+NO_BUILD=	yes
 
 .include <bsd.port.options.mk>
 
