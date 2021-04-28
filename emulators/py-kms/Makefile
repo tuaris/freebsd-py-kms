@@ -41,7 +41,7 @@ SHEBANG_FILES=	${PYKMS_SUBDIR}/*.py
 
 USE_RC_SUBR=	py-kms
 
-USE_PYTHON=	distutils allflavors
+USE_PYTHON=	flavors allflavors
 
 SUB_LIST+=	PORTNAME=py-${PORTNAME} RCNAME=py_${PORTNAME} \
 		PYTHON_CMD=${PYTHON_CMD} PYTHON_VER=${PYTHON_VER} \
