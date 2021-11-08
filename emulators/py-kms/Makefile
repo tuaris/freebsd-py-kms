@@ -3,6 +3,7 @@
 
 PORTNAME=	kms
 DISTVERSION=	g20200803
+PORTREVISION=	1
 CATEGORIES=	emulators
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 
@@ -18,7 +19,7 @@ RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}argparse>0:devel/py-argparse@${PY_FLAVOR} \
 			${PYTHON_PKGNAMEPREFIX}sqlite3>0:databases/py-sqlite3@${PY_FLAVOR} \
 			${PYTHON_PKGNAMEPREFIX}tzlocal>=1.2:devel/py-tzlocal@${PY_FLAVOR}
 
-USES=	python:3.4+ shebangfix
+USES=	python:3.7+ shebangfix
 
 USE_GITHUB=	yes
 GH_TAGNAME=	5b328d2
