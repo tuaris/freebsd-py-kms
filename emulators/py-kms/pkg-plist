@@ -8,6 +8,8 @@ share/py-kms/__pycache__/pykms_Base%%PYTHON_EXT_SUFFIX%%.opt-1.pyc
 share/py-kms/__pycache__/pykms_Base%%PYTHON_EXT_SUFFIX%%.pyc
 share/py-kms/__pycache__/pykms_Client%%PYTHON_EXT_SUFFIX%%.opt-1.pyc
 share/py-kms/__pycache__/pykms_Client%%PYTHON_EXT_SUFFIX%%.pyc
+share/py-kms/__pycache__/pykms_Connect%%PYTHON_EXT_SUFFIX%%.opt-1.pyc
+share/py-kms/__pycache__/pykms_Connect%%PYTHON_EXT_SUFFIX%%.pyc
 share/py-kms/__pycache__/pykms_DB2Dict%%PYTHON_EXT_SUFFIX%%.opt-1.pyc
 share/py-kms/__pycache__/pykms_DB2Dict%%PYTHON_EXT_SUFFIX%%.pyc
 share/py-kms/__pycache__/pykms_Dcerpc%%PYTHON_EXT_SUFFIX%%.opt-1.pyc
@@ -52,6 +54,7 @@ share/py-kms/graphics/pykms_Keys.gif
 share/py-kms/pykms_Aes.py
 share/py-kms/pykms_Base.py
 share/py-kms/pykms_Client.py
+share/py-kms/pykms_Connect.py
 share/py-kms/pykms_DB2Dict.py
 share/py-kms/pykms_Dcerpc.py
 share/py-kms/pykms_Filetimes.py

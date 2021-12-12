@@ -8,9 +8,6 @@ sysrc %%PORTNAME%%_enable="YES"
 To start %%PORTNAME%%:
 service %%PORTNAME%% start
 
-To configure %%PORTNAME%% edit:
-%%ETCDIR%%/%%PORTNAME%%.conf
-
 EOM
 }
 ]
