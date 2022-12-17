@@ -1,12 +1,13 @@
 # Created by: Daniel Morante <daniel@morante.net>
 
 PORTNAME=	kms
-DISTVERSION=	g20211211
+DISTVERSION=	g20221207
 CATEGORIES=	emulators
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 
 MAINTAINER=	daniel@morante.net
 COMMENT=	KMS Server Emulator written in Python
+#WWW=	https://github.com/Py-KMS-Organization/py-kms
 
 LICENSE=	UNLICENSE MIT
 LICENSE_COMB=	multi
@@ -22,7 +23,7 @@ USES=	python:3.8+ shebangfix
 USE_GITHUB=	yes
 GH_ACCOUNT=	Py-KMS-Organization
 GH_PROJECT=	py-${PORTNAME}
-GH_TAGNAME=	da6d510
+GH_TAGNAME=	ee5be9a
 
 USE_PYTHON=	flavors
 USE_RC_SUBR=	py-kms
