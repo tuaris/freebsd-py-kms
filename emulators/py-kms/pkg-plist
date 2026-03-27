@@ -1,7 +1,4 @@
-share/py-kms/Etrigan.py
 share/py-kms/KmsDataBase.xml
-share/py-kms/__pycache__/Etrigan%%PYTHON_TAG%%.opt-1.pyc
-share/py-kms/__pycache__/Etrigan%%PYTHON_TAG%%.pyc
 share/py-kms/__pycache__/pykms_Aes%%PYTHON_TAG%%.opt-1.pyc
 share/py-kms/__pycache__/pykms_Aes%%PYTHON_TAG%%.pyc
 share/py-kms/__pycache__/pykms_Base%%PYTHON_TAG%%.opt-1.pyc
@@ -18,10 +15,6 @@ share/py-kms/__pycache__/pykms_Filetimes%%PYTHON_TAG%%.opt-1.pyc
 share/py-kms/__pycache__/pykms_Filetimes%%PYTHON_TAG%%.pyc
 share/py-kms/__pycache__/pykms_Format%%PYTHON_TAG%%.opt-1.pyc
 share/py-kms/__pycache__/pykms_Format%%PYTHON_TAG%%.pyc
-share/py-kms/__pycache__/pykms_GuiBase%%PYTHON_TAG%%.opt-1.pyc
-share/py-kms/__pycache__/pykms_GuiBase%%PYTHON_TAG%%.pyc
-share/py-kms/__pycache__/pykms_GuiMisc%%PYTHON_TAG%%.opt-1.pyc
-share/py-kms/__pycache__/pykms_GuiMisc%%PYTHON_TAG%%.pyc
 share/py-kms/__pycache__/pykms_Misc%%PYTHON_TAG%%.opt-1.pyc
 share/py-kms/__pycache__/pykms_Misc%%PYTHON_TAG%%.pyc
 share/py-kms/__pycache__/pykms_PidGenerator%%PYTHON_TAG%%.opt-1.pyc
@@ -46,11 +39,8 @@ share/py-kms/__pycache__/pykms_Sql%%PYTHON_TAG%%.opt-1.pyc
 share/py-kms/__pycache__/pykms_Sql%%PYTHON_TAG%%.pyc
 share/py-kms/__pycache__/pykms_Structure%%PYTHON_TAG%%.opt-1.pyc
 share/py-kms/__pycache__/pykms_Structure%%PYTHON_TAG%%.pyc
-share/py-kms/graphics/pykms_Arrow_Left.gif
-share/py-kms/graphics/pykms_Arrow_Right.gif
-share/py-kms/graphics/pykms_Keyhole_Left.gif
-share/py-kms/graphics/pykms_Keyhole_Right.gif
-share/py-kms/graphics/pykms_Keys.gif
+%%WEBUI%%share/py-kms/__pycache__/pykms_WebUI%%PYTHON_TAG%%.opt-1.pyc
+%%WEBUI%%share/py-kms/__pycache__/pykms_WebUI%%PYTHON_TAG%%.pyc
 share/py-kms/pykms_Aes.py
 share/py-kms/pykms_Base.py
 share/py-kms/pykms_Client.py
@@ -59,8 +49,6 @@ share/py-kms/pykms_DB2Dict.py
 share/py-kms/pykms_Dcerpc.py
 share/py-kms/pykms_Filetimes.py
 share/py-kms/pykms_Format.py
-share/py-kms/pykms_GuiBase.py
-share/py-kms/pykms_GuiMisc.py
 share/py-kms/pykms_Misc.py
 share/py-kms/pykms_PidGenerator.py
 share/py-kms/pykms_RequestUnknown.py
@@ -73,7 +61,12 @@ share/py-kms/pykms_RpcRequest.py
 share/py-kms/pykms_Server.py
 share/py-kms/pykms_Sql.py
 share/py-kms/pykms_Structure.py
-%%X11%%share/pixmaps/py-kms.png
+%%WEBUI%%share/py-kms/pykms_WebUI.py
+%%WEBUI%%share/py-kms/static/css/bulma.min.css
+%%WEBUI%%share/py-kms/templates/base.html
+%%WEBUI%%share/py-kms/templates/clients.html
+%%WEBUI%%share/py-kms/templates/license.html
+%%WEBUI%%share/py-kms/templates/products.html
 @dir(daemon,daemon,) /var/log/kms
 @dir(daemon,daemon,) /var/run/kms
 @dir(daemon,daemon,) /var/db/kms
