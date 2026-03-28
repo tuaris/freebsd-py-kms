@@ -34,11 +34,11 @@ load_rc_config "$name"
 pidfile="%%KMS_RUNDIR%%/%%PORTNAME%%.pid"
 logfile="%%KMS_LOGDIR%%/%%PORTNAME%%.log"
 
-procname="%%PYTHON_CMD%%"
-kms_script="%%PREFIX%%/share/py-kms/pykms_Server.py"
+procname="%%PREFIX%%/share/py-kms/pykms_Server.py"
+command_interpreter="%%PYTHON_CMD%%"
 kms_logfile="%%KMS_LOGDIR%%/%%PORTNAME%%_srv.log"
 command="/usr/sbin/daemon"
-command_args="-f -p ${pidfile} -o ${logfile} -T ${name} -- ${procname} ${kms_script} ${%%RCNAME%%_ip} ${%%RCNAME%%_port} --logfile ${kms_logfile} --sqlite ${%%RCNAME%%_kmsdb} ${%%RCNAME%%_flags}"
+command_args="-f -p ${pidfile} -o ${logfile} -T ${name} -- ${procname} ${%%RCNAME%%_ip} ${%%RCNAME%%_port} --logfile ${kms_logfile} --sqlite ${%%RCNAME%%_kmsdb} ${%%RCNAME%%_flags}"
 
 start_precmd="${name}_prestart"
 
