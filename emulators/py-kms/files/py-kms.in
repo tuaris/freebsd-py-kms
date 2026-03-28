@@ -27,15 +27,25 @@ load_rc_config "$name"
 : ${%%RCNAME%%_enable:="NO"}
 : ${%%RCNAME%%_user:="daemon"}
 : ${%%RCNAME%%_group:="daemon"}
+: ${%%RCNAME%%_ip:="0.0.0.0"}
+: ${%%RCNAME%%_port:="1688"}
 : ${%%RCNAME%%_kmsdb:="%%KMS_DBDIR%%/pykms_database.db"}
 
 pidfile="%%KMS_RUNDIR%%/%%PORTNAME%%.pid"
 logfile="%%KMS_LOGDIR%%/%%PORTNAME%%.log"
 
-procname="%%PREFIX%%/share/py-kms/pykms_Server.py"
-command_interpreter="%%PYTHON_CMD%%"
+procname="%%PYTHON_CMD%%"
+kms_script="%%PREFIX%%/share/py-kms/pykms_Server.py"
+kms_logfile="%%KMS_LOGDIR%%/%%PORTNAME%%_srv.log"
 command="/usr/sbin/daemon"
-command_args="-p ${pidfile} -o ${logfile} -S -T ${name} -u ${%%RCNAME%%_user} -- ${procname} --sqlite ${%%RCNAME%%_kmsdb} ${%%RCNAME%%_flags}"
+command_args="-f -p ${pidfile} -o ${logfile} -T ${name} -- ${procname} ${kms_script} ${%%RCNAME%%_ip} ${%%RCNAME%%_port} --logfile ${kms_logfile} --sqlite ${%%RCNAME%%_kmsdb} ${%%RCNAME%%_flags}"
+
+start_precmd="${name}_prestart"
+
+py_kms_prestart()
+{
+	install -d -o ${%%RCNAME%%_user} -g ${%%RCNAME%%_group} %%KMS_RUNDIR%% %%KMS_LOGDIR%% %%KMS_DBDIR%%
+}
 
 run_rc_command "$1"
 
