@@ -15,7 +15,7 @@
 #								Default: daemon
 # %%RCNAME%%_group (str):		%%PORTNAME%% daemon group
 #								Default: daemon
-# %%RCNAME%%_kmsdb (str):		%%PORTNAME%% location of SQLlite database
+# %%RCNAME%%_kmsdb (str):		%%PORTNAME%% location of SQLite database
 #								Default: %%KMS_DBDIR%%/pykms_database.db
 
 . /etc/rc.subr
@@ -29,19 +29,13 @@ load_rc_config "$name"
 : ${%%RCNAME%%_group:="daemon"}
 : ${%%RCNAME%%_kmsdb:="%%KMS_DBDIR%%/pykms_database.db"}
 
-extra_commands="reload"
-
 pidfile="%%KMS_RUNDIR%%/%%PORTNAME%%.pid"
-kms_logfile="%%KMS_LOGDIR%%/%%PORTNAME%%.log"
-srv_logfile="%%KMS_LOGDIR%%/%%PORTNAME%%_srv.log"
+logfile="%%KMS_LOGDIR%%/%%PORTNAME%%.log"
 
+procname="%%PREFIX%%/share/py-kms/pykms_Server.py"
 command_interpreter="%%PYTHON_CMD%%"
-command="%%PREFIX%%/share/py-kms/pykms_Server.py"
-command_args="--logfile ${kms_logfile} --sqlite ${%%RCNAME%%_kmsdb} ${%%RCNAME%%_flags} etrigan start --etrigan-pid ${pidfile} --etrigan-log ${srv_logfile}"
-
-status_cmd="${command} etrigan status"
-reload_cmd="${command} etrigan reload"
-stop_cmd="${command} etrigan stop"
+command="/usr/sbin/daemon"
+command_args="-p ${pidfile} -o ${logfile} -S -T ${name} -u ${%%RCNAME%%_user} -- ${procname} --sqlite ${%%RCNAME%%_kmsdb} ${%%RCNAME%%_flags}"
 
 run_rc_command "$1"
 
