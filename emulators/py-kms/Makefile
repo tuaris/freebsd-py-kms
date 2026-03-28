@@ -21,7 +21,7 @@ USES=	python:3.9+ shebangfix
 USE_GITHUB=	yes
 GH_ACCOUNT=	Py-KMS-Organization
 GH_PROJECT=	py-${PORTNAME}
-GH_TAGNAME=	db7409b5
+GH_TAGNAME=	db7409b51aad
 
 USE_PYTHON=	flavors
 USE_RC_SUBR=	py-kms
